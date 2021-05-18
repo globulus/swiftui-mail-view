@@ -66,6 +66,16 @@ public struct ComposeMailData {
     public let message: String
     public let attachments: [AttachmentData]?
     
+    public init(subject: String,
+                recipients: [String]?,
+                message: String,
+                attachments: [AttachmentData]?) {
+        self.subject = subject
+        self.recipients = recipients
+        self.message = message
+        self.attachments = attachments
+    }
+    
     public static let empty = ComposeMailData(subject: "", recipients: nil, message: "", attachments: nil)
 }
 
@@ -73,6 +83,14 @@ public struct AttachmentData {
     public let data: Data
     public let mimeType: String
     public let fileName: String
+    
+    public init(data: Data,
+                mimeType: String,
+                fileName: String) {
+        self.data = data
+        self.mimeType = mimeType
+        self.fileName = fileName
+    }
 }
 
 struct MailViewTest: View {
