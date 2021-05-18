@@ -8,6 +8,12 @@ public struct MailView: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentation
     @Binding var data: ComposeMailData
     let callback: MailViewCallback
+    
+    public init(data: Binding<ComposeMailData>,
+                callback: MailViewCallback) {
+        _data = data
+        self.callback = callback
+    }
 
     public class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
         @Binding var presentation: PresentationMode
